@@ -4,6 +4,16 @@ class Vector{
   float x;
   float y;
 
+  public Vector(){
+    x=0f;
+    y=0f;
+  }
+
+  public Vector(float x, float y){
+    this.x = x;
+    this.y = y;
+  }
+
   public void setX(float value){
     this.x=value;
   }
@@ -25,4 +35,7 @@ class Vector{
     this.y+=that.y;
   }
 
+  public Vector clone(){
+    return new Vector(x,y);
+  }
 }

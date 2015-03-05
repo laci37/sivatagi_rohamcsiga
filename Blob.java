@@ -5,5 +5,5 @@ abstract class Blob extends Circle{
     super(location,10f);
   }
 
-  public void applyEffect(Robot r);
+  public abstract void applyEffect(Robot r);
 }
