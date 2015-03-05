@@ -3,16 +3,20 @@ package sivatagi_rohamcsiga;
 class Robot{
   Vector speed;
   boolean canChangeSpeed;
+  boolean alive;
   Vector location;
   Racetrack racetrack;
   int oilSupply;
   int glueSupply;
+  int laps;
 
   public Robot(Vector location, Racetrack racetrack){
     speed = new Vector();
     canChangeSpeed = true;
+    alive = true;
     oilSupply=5;
     glueSupply=5;
+    laps=0;
     this.location = location;
     this.racetrack = racetrack;
   }
@@ -37,6 +41,14 @@ class Robot{
     return glueSupply;
   }
 
+  public int getLaps(){
+    return laps;
+  }
+
+  public boolean isAlive(){
+    return alive;
+  }
+
   //getters end
   
   public void setSpeed(Vector value){
@@ -49,6 +61,10 @@ class Robot{
 
   public void setLocation(Vector value){
     this.location=value;
+  }
+
+  public void setLaps(int value){
+    this.laps=value;
   }
 
   //setters end
@@ -68,9 +84,15 @@ class Robot{
   }
 
   public void jump(){
+    Vector oldloc=location.clone();
     location.add(speed);
-    canChangeSpeed = true;
-    Blob b = racetrack.getBlobAt(this.location);
-    if(b!=null) b.applyEffect(this);
+    if(racetrack.isInside(location)){
+      laps += racetrack.lapDifference(oldloc,location);
+      canChangeSpeed = true;
+      Blob b = racetrack.getBlobAt(this.location);
+      if(b!=null) b.applyEffect(this);
+    } else {
+      alive=false;
+    }
   }
 }

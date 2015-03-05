@@ -9,7 +9,7 @@ class Racetrack extends Shape{
   }
 
   public Blob getBlobAt(Vector location){
-    for(Blob b in blobs){
+    for(Blob b : blobs){
       if(b.isInside(location)){
         return b;
       }
@@ -26,8 +26,17 @@ class Racetrack extends Shape{
     return true;
   }
 
-  public boolean crossesFinishLine(Vector v){
+  public int lapDifference(Vector start, Vector end){
     //TODO
-    return false;
+    return 0;
+  }
+
+  public ArrayList<Robot> createRobots(int num){
+    ArrayList<Robot> list= new ArrayList();
+    for(int i=0;i<num;i++){
+      //TODO rendes elhelyezés
+      list.add(new Robot(new Vector(),this));
+    }
+    return list;
   }
 }
