@@ -11,8 +11,8 @@ public class Skeleton {
     public void start()
     {
         int numPlayers = getPlayerNumber();
-        Simulation simulation = new Simulation();
-        loop();
+        Simulation simulation = new Simulation(numPlayers);
+        loop(simulation);
     }
 
     private void loop(Simulation simulation){
@@ -34,7 +34,7 @@ public class Skeleton {
       return 1;
     }
 
-    private char getChar(StringMessage){
+    private char getChar(String message){
       //TODO
       return 'n';
     }
