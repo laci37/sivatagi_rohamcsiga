@@ -49,12 +49,12 @@ public class Skeleton {
 
     private void modifySpeed(Robot r){
         float angle = getFloat("Merre változtatsz sebességet?(rad)");
-        Vector diff = new Vector(Math.cos(angle),Math.sin(angle));
+        Vector diff = new Vector((float)Math.cos(angle),(float)Math.sin(angle));
         r.getSpeed().add(diff);
     }
 
     private void placeBlob(Robot r){
-        boolean stop = false
+        boolean stop = false;
         while(!stop){
             switch(getChar("Milyen foltot akarsz lerakni(o/r/n)?")){
                 case 'o': 
