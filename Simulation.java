@@ -16,7 +16,7 @@ class Simulation {
         return robots.get(nextRobot);
     }
 
-    public void doJump() {
+    public boolean doJump() {
         getNextRobot().jump();
         int prevRobot = nextRobot;
         nextRobot++;
@@ -27,8 +27,9 @@ class Simulation {
             if (nextRobot == robots.size())
                 nextRobot = 0;
             if (nextRobot == prevRobot) {
-                // TODO játék vége, max 1 élő robot van
+                return false;
             }
         }
+        return true;
     }
 }
