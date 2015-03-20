@@ -7,7 +7,7 @@ abstract class Blob extends Circle {
         super(location, 10f);
         System.out.println("[Trace] "+this.toString()+" Blob.Blob");
     }
-	//Absztrakt metódus.
-	//A folt hatásnak bekövetkezéséért felelős függvény, melyet a leszármazott osztályoknak kell megvlósítani.
+    //Absztrakt metódus.
+    //A folt hatásnak bekövetkezéséért felelős függvény, melyet a leszármazott osztályoknak kell megvalósítani.
     public abstract void applyEffect(Robot r);
 }
