@@ -28,7 +28,7 @@ public class Skeleton {
             Robot next = simulation.getNextRobot();
             modifySpeed(next);
             placeBlob(next);
-            simulation.doJump();
+            if(!simulation.doJump()) break;
         }
     }
 
