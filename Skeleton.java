@@ -1,6 +1,9 @@
 package sivatagi_rohamcsiga;
+import java.util.Scanner;
 
 public class Skeleton {
+
+    Scanner input;
 
     public static void main(String[] args)
     {
@@ -8,6 +11,11 @@ public class Skeleton {
         s.start();
     }
     
+    public Skeleton()
+    {
+        input = new Scanner(System.in);      
+    }
+
     public void start()
     {
         int numPlayers = getPlayerNumber();
@@ -25,37 +33,49 @@ public class Skeleton {
     }
 
     private float getFloat(String message){
-      //TODO
-      return 0f;
+        System.out.println(message);
+        return input.nextFloat(); 
     }
 
     private int getInt(String message){
-      //TODO
-      return 1;
+        System.out.println(message);
+        return input.nextInt(); 
     }
 
     private char getChar(String message){
-      //TODO
-      return 'n';
+        System.out.println(message);
+        return input.nextLine().charAt(0);
     }
 
     private void modifySpeed(Robot r){
-      //TODO
-
+        float angle = getFloat("Merre változtatsz sebességet?(rad)");
+        Vector diff = new Vector(Math.cos(angle),Math.sin(angle));
+        r.getSpeed().add(diff);
     }
 
     private void placeBlob(Robot r){
-      //TODO
-
+        boolean stop = false
+        while(!stop){
+            switch(getChar("Milyen foltot akarsz lerakni(o/r/n)?")){
+                case 'o': 
+                    r.placeOilBlob();
+                    stop=true;
+                    break;
+                case 'r':
+                    r.placeGlueBlob();
+                    stop=true;
+                    break;
+                case 'n':
+                    stop=true;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     private int getPlayerNumber(){
-        //TODO
-        return 1;            
+        return getInt("Hány robot legyen?");
     }
     
-    public Skeleton()
-    {
-        
-    }
 }
