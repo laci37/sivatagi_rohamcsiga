@@ -43,7 +43,9 @@ public class Skeleton {
     private float getFloat(String message){
         System.out.println("[Trace] "+this.toString()+" Skeleton.getFloat");
         System.out.println(message);
-        return input.nextFloat(); 
+        float res = input.nextFloat(); 
+        input.nextLine();
+        return res;
     }
 
     //Kiírja a paraméterül kapott üzenetet.
@@ -51,7 +53,9 @@ public class Skeleton {
     private int getInt(String message){
         System.out.println("[Trace] "+this.toString()+" Skeleton.getInt");
         System.out.println(message);
-        return input.nextInt(); 
+        int res = input.nextInt(); 
+        input.nextLine();
+        return res;
     }
 
     //Kiírja a paraméterül kapott üzenetet.
@@ -66,9 +70,11 @@ public class Skeleton {
     //Megváltoztatja a robot sebességét.
     private void modifySpeed(Robot r){
         System.out.println("[Trace] "+this.toString()+" Skeleton.modifySpeed");
-        float angle = getFloat("Merre változtatsz sebességet?(rad)");
-        Vector diff = new Vector((float)Math.cos(angle),(float)Math.sin(angle));
-        r.getSpeed().add(diff);
+        if(r.getCanChangeSpeed()){
+            float angle = getFloat("Merre változtatsz sebességet?(rad)");
+            Vector diff = new Vector((float)Math.cos(angle),(float)Math.sin(angle));
+            r.getSpeed().add(diff);
+        }
     }
 
     //A lerakandó folt kiválaszásáért felelős függvény.
