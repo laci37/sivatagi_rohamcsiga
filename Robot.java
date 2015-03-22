@@ -134,4 +134,11 @@ class Robot {
             alive = false;
         }
     }
+
+    public void debugPrint(){
+       System.out.println(this.toString()); 
+       System.out.println("Pozíció: "+location.toString());
+       System.out.println("Sebesség: "+speed.toString());
+       System.out.println("Körök: "+laps);
+    }
 }

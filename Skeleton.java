@@ -32,6 +32,8 @@ public class Skeleton {
         System.out.println("[Trace] "+this.toString()+" Skeleton.loop");
         while(true){
             Robot next = simulation.getNextRobot();
+            System.out.println("Következő robot:");
+            next.debugPrint();
             modifySpeed(next);
             placeBlob(next);
             if(!simulation.doJump()) break;
