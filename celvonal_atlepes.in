@@ -1,0 +1,5 @@
+createRacetrack 1
+setPos 0 (45;-1)
+setSpeed (0;2)
+jump 0
+printRobot

@@ -1,0 +1,8 @@
+createRacetrack 1
+randomGenerator off
+setRandomFloat 0
+setPos(45;0)
+createCleaner (47;0) (-1;0)
+jump 0
+printRobot
+printCleaner
