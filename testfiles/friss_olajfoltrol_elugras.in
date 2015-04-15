@@ -1,0 +1,5 @@
+createRacetrack 1
+createBlob o (46;0)
+jump 0
+jump 0
+printRobot
