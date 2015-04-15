@@ -1,0 +1,5 @@
+Robot@<addr>
+Pos: (46;0) Speed: (1;0)
+Laps: 0 Alive: true
+GlueBlob@<addr>
+Pos: (42.5;0) Alive: true Age: <int>
