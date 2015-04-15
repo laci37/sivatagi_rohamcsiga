@@ -1,0 +1,12 @@
+Robot@<addr>
+Pos: (42.5;0) Speed: (0;0)
+Laps: 0 Alive: true
+Oil: <int> Glue: <int>
+Robot@<addr>
+Pos: (45;0) Speed: (0;0)
+Laps: 0 Alive: true
+Oil: <int> Glue: <int>
+Robot@<addr>
+Pos: (47.5;0) Speed: (0;0)
+Laps: 0 Alive: true
+Oil: <int> Glue: <int>

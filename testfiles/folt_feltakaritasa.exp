@@ -1,0 +1,5 @@
+Cleaner@<addr>
+Pos: (45;10) Speed (1;0)
+Alive: true
+OilBlob@<addr>
+Pos: (45;10) Alive: false Age: <int>
