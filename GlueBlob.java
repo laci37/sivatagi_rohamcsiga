@@ -10,10 +10,17 @@ class GlueBlob extends Blob {
 
     //Ez a függvény felelős a GlueBlob hatásának végrehajtásáért, tehát lefelezi a robot sebességét.
     public void applyEffect(Robot r) {
-        System.out.println("[Trace] "+this.toString()+" GlueBlob.applyEffect");
-        Vector speed = r.getSpeed();
-        speed.setX(speed.getX() / 2);
-        speed.setY(speed.getY() / 2);
-        // referencia átadás miatt működik
+        if(isAlive()){
+            System.out.println("[Trace] "+this.toString()+" GlueBlob.applyEffect");
+            Vector speed = r.getSpeed();
+            speed.setX(speed.getX() / 2);
+            speed.setY(speed.getY() / 2);
+            // referencia átadás miatt működik
+            age++;
+        }
+    }
+
+    public boolean isAlive(){
+        return age<4; 
     }
 }
