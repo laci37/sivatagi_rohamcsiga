@@ -1,0 +1,7 @@
+createRacetrack 1
+create o (46;0)
+createCleaner (46;0)
+jump 0
+jump 0
+jump 0
+printRobot

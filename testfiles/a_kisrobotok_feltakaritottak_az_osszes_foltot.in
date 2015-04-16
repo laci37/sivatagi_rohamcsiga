@@ -1,0 +1,10 @@
+createRactrack 1
+randomGenerator off
+setRandomFloat 0
+createBlob o (46;0)
+creatCleaner (46; 0)
+jump 0
+jump 0
+printCleaner
+
+
