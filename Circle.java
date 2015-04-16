@@ -22,6 +22,7 @@ class Circle extends Shape {
         return center;
     }
 
+
     //Visszatér a kör sugarával.
     public float getRadius() {
         System.out.println("[Trace] "+this.toString()+" Circle.getRadius");
@@ -29,6 +30,14 @@ class Circle extends Shape {
     }
 
     // getters end
+
+    public void setCenter(Vector center){
+        this.center = center;
+    }
+
+    public void setRadius(float r){
+        radius = r;
+    }
 
     //Paraméterül kap egy Vector-t, és eldönti, hogy annak végpontja az adott körön belül van-e.
     public boolean isInside(Vector v) {

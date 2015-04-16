@@ -2,12 +2,23 @@ package sivatagi_rohamcsiga;
 //Absztrakt osztály.
 //A foltok megvalósításáért felelős osztály.
 abstract class Blob extends Circle {
+    protected int age;
+
+    public Blob(Vector location, int age){
+      this(location);
+      this.age = age;
+    }
+  
     // Az osztály konstrukra, mely a megadott pozíción létrehoz egy új foltot.
     public Blob(Vector location) {
-        super(location, 10f);
+        super(location, 1f);
         System.out.println("[Trace] "+this.toString()+" Blob.Blob");
     }
     //Absztrakt metódus.
     //A folt hatásnak bekövetkezéséért felelős függvény, melyet a leszármazott osztályoknak kell megvalósítani.
     public abstract void applyEffect(Robot r);
+
+    public void age(){
+
+    }
 }
