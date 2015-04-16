@@ -1,6 +1,6 @@
-package sivatagi_rohamcsiga.tester
-import java.util.HashMap
-import java.io.*
+package sivatagi_rohamcsiga.tester;
+import java.util.HashMap;
+import java.io.*;
 class Main{
     public static void main(String[] args){
         HashMap<String,File> inputs = getInputs();
@@ -9,29 +9,33 @@ class Main{
             File in = inputs.get(name);
             File exp = expect.get(name);
             if(exp!=null){
-                Process p = Runtime.exec("java anyámkínja");
-                OutputStream os = p.getOutputStream();
-                InputStream is = p.getInputStream();
-                FileInputStream ifs = new FileIputStream(in);
-                BufferedReader resultReader = new BufferedReader(is);
-                BufferedReader expectReader = new BufferedReader(new FileInputStream(exp));
-                byte[] buff = new byte[1024];
-                int bytesRead;
-                while((bytesRead = ifs.read(buffer)) != -1){
-                    os.write(buffer,0,bytesRead);
+                try{
+                    Process p = Runtime.getRuntime().exec("java anyámkínja");
+                    OutputStream os = p.getOutputStream();
+                    InputStream is = p.getInputStream();
+                    FileInputStream ifs = new FileInputStream(in);
+                    BufferedReader resultReader = new BufferedReader(new InputStreamReader(is));
+                    BufferedReader expectReader = new BufferedReader(new InputStreamReader(new FileInputStream(exp)));
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+                    while((bytesRead = ifs.read(buffer)) != -1){
+                        os.write(buffer,0,bytesRead);
+                    }
+                    compare(expectReader,resultReader);
+                } catch(Exception e) {
+                    System.out.println(e.getMessage());
                 }
-                compare(expectReader,resultReader);
-
             } else {
-                System.error.println("Hiányzó exp fájl: "+name);
+                System.err.println("Hiányzó exp fájl: "+name);
             }
         }
     }
 
-    private static void compare(BufferedReader exp, BufferedReader res){
+    private static void compare(BufferedReader exp, BufferedReader res) throws IOException{
         String expLine;
         String resLine;
         while((expLine = exp.readLine()) != null){
+            resLine = res.readLine();
             if(!compareLine(expLine,resLine)){
                 System.out.println("HIBA!");
                 System.out.println("Elvárt: "+expLine);
@@ -40,30 +44,36 @@ class Main{
         }
     }
 
+    private static boolean compareLine(String exp, String res){
+        //TODO
+       return true;
+    }
+
     private static HashMap<String,File> createMap(File[] fs){
         HashMap<String,File> map = new HashMap();
-        for(f : fs){
-            map.add(f.getName().split('.')[0],f);
+        for(File f : fs){
+            map.put(f.getName().split(".")[0],f);
         }
+        return map;
     }
 
     private static HashMap<String,File> getInputs(){
         File wd = new File(".");
-        File[] ins = wd.listFiles(new FileFilter{
+        File[] ins = wd.listFiles(new FileFilter(){
             public boolean accept(File f){
                 return f.isFile() && f.getName().endsWith(".in");
             }
-        })
+        });
         return createMap(ins);
     }
 
     private static HashMap<String,File> getExpected(){
         File wd = new File(".");
-        File[] exps = wd.listFiles(new FileFilter{
+        File[] exps = wd.listFiles(new FileFilter(){
             public boolean accept(File f){
                 return f.isFile() && f.getName().endsWith(".exp");
             }
-        })
+        });
         return createMap(exps);
     }
 }
