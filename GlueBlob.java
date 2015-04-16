@@ -20,7 +20,7 @@ class GlueBlob extends Blob {
         }
     }
 
-    public void isAlive(){
+    public boolean isAlive(){
         return age<4; 
     }
 }

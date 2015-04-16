@@ -19,7 +19,7 @@ class OilBlob extends Blob {
         age++;
     }
 
-    public boolean isAlve(){
+    public boolean isAlive(){
         return age<4;
     }
 }

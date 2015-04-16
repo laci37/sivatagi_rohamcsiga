@@ -21,4 +21,8 @@ abstract class Blob extends Circle {
     public void age(){
 
     }
+
+    public void kill(){
+        age=1000;
+    }
 }

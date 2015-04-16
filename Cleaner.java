@@ -1,4 +1,4 @@
-package sivatagi_rohamcsiga
+package sivatagi_rohamcsiga;
 
 class Cleaner extends Circle{
     private boolean alive;
@@ -12,7 +12,7 @@ class Cleaner extends Circle{
         goTowardsBlob(selectBlob());
     }
 
-    protected Vector goTowardsBlob(Blob target){
+    protected void goTowardsBlob(Blob target){
         float dirx = target.getCenter().getX() - this.getCenter().getX();
         float diry = target.getCenter().getY() - this.getCenter().getY();
         float length =(float)Math.sqrt(dirx*dirx + diry*diry);
@@ -31,7 +31,7 @@ class Cleaner extends Circle{
     }
 
     public void step(){
-        Blob b = raceTrack.getBlobAt(this.getCenter());
+        Blob b = racetrack.getBlobAt(this.getCenter());
         if(b!=null){
             b.kill();
             goTowardsBlob(selectBlob());
@@ -41,7 +41,7 @@ class Cleaner extends Circle{
     }
 
     protected void jump(){
-        getCenter.add(speed);
+        getCenter().add(speed);
         if(!racetrack.isInside(getCenter())) kill();
     }
 
