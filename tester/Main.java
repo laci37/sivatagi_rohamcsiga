@@ -10,7 +10,7 @@ class Main{
             File exp = expect.get(name);
             if(exp!=null){
                 try{
-                    Process p = Runtime.getRuntime().exec("java anyámkínja");
+                    Process p = Runtime.getRuntime().exec("java -cp sivatagi_rohamcsiga sivatagi_rohamcsiga.Prototype");
                     OutputStream os = p.getOutputStream();
                     InputStream is = p.getInputStream();
                     FileInputStream ifs = new FileInputStream(in);
@@ -45,8 +45,52 @@ class Main{
     }
 
     private static boolean compareLine(String exp, String res){
-        //TODO
-       return true;
+        int exp_next=0, res_next=0;
+        while(exp_next<exp.length() && res_next<res.length()){
+            if(exp.charAt(exp_next) != '<'){
+                if(exp.charAt(exp_next)!=res.charAt(res_next)){
+                    return false;
+                }
+                res_next++;
+                exp_next++;
+            } else {
+                int close_index = exp.indexOf('>',exp_next);
+                String argname = exp.substring(exp_next+1,close_index);
+                if(argname.equals("addr")) {
+                    while(true){
+                        if(Character.isDigit(res.charAt(res_next)) ||
+                          res.charAt(res_next) == 'a' ||
+                          res.charAt(res_next) == 'b' ||
+                          res.charAt(res_next) == 'c' ||
+                          res.charAt(res_next) == 'd' ||
+                          res.charAt(res_next) == 'e' ||
+                          res.charAt(res_next) == 'f') res_next++;
+                        else if(Character.isWhitespace(res.charAt(res_next))) break;
+                        else return false;
+                    }
+                } else if(argname.startsWith("addr")){
+                    while(true){
+                        if(Character.isDigit(res.charAt(res_next)) ||
+                          res.charAt(res_next) == 'a' ||
+                          res.charAt(res_next) == 'b' ||
+                          res.charAt(res_next) == 'c' ||
+                          res.charAt(res_next) == 'd' ||
+                          res.charAt(res_next) == 'e' ||
+                          res.charAt(res_next) == 'f') res_next++;
+                        else if(Character.isWhitespace(res.charAt(res_next))) break;
+                        else return false;
+                    }
+                } else if (argname.equals("int")) {
+                    while(true){
+                        if(Character.isDigit(res.charAt(res_next))) res_next++;
+                        else if(Character.isWhitespace(res.charAt(res_next))) break;
+                        else return false;
+                    }
+                }
+                exp_next = close_index+1;
+            }
+        }
+        return true;
     }
 
     private static HashMap<String,File> createMap(File[] fs){
