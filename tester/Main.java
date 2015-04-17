@@ -3,14 +3,17 @@ import java.util.HashMap;
 import java.io.*;
 class Main{
     public static void main(String[] args){
-        HashMap<String,File> inputs = getInputs();
-        HashMap<String,File> expect = getExpected();
+        String cp = args[1];
+        String testdir = args[2];
+        HashMap<String,File> inputs = getInputs(testdir);
+        HashMap<String,File> expect = getExpected(testdir);
         for(String name : inputs.keySet()){
+            System.out.println("Test: "+name);
             File in = inputs.get(name);
             File exp = expect.get(name);
             if(exp!=null){
                 try{
-                    Process p = Runtime.getRuntime().exec("java -cp sivatagi_rohamcsiga sivatagi_rohamcsiga.Prototype");
+                    Process p = Runtime.getRuntime().exec("java -cp "+cp+" sivatagi_rohamcsiga.Prototype");
                     OutputStream os = p.getOutputStream();
                     InputStream is = p.getInputStream();
                     FileInputStream ifs = new FileInputStream(in);
@@ -101,8 +104,8 @@ class Main{
         return map;
     }
 
-    private static HashMap<String,File> getInputs(){
-        File wd = new File(".");
+    private static HashMap<String,File> getInputs(String dir){
+        File wd = new File(dir);
         File[] ins = wd.listFiles(new FileFilter(){
             public boolean accept(File f){
                 return f.isFile() && f.getName().endsWith(".in");
@@ -111,8 +114,8 @@ class Main{
         return createMap(ins);
     }
 
-    private static HashMap<String,File> getExpected(){
-        File wd = new File(".");
+    private static HashMap<String,File> getExpected(String dir){
+        File wd = new File(dir);
         File[] exps = wd.listFiles(new FileFilter(){
             public boolean accept(File f){
                 return f.isFile() && f.getName().endsWith(".exp");
