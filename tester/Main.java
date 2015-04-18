@@ -23,13 +23,14 @@ class Main{
                     int bytesRead;
                     while((bytesRead = ifs.read(buffer)) != -1){
                         os.write(buffer,0,bytesRead);
+                        os.flush();
                     }
                     compare(expectReader,resultReader);
                 } catch(Exception e) {
-                    System.out.println(e.getMessage());
+                    System.out.println(e +" "+ e.getMessage());
                 }
             } else {
-                System.err.println("Hiányzó exp fájl: "+name);
+                System.out.println("Hiányzó exp fájl: "+name);
             }
         }
     }
@@ -39,12 +40,17 @@ class Main{
         String resLine;
         while((expLine = exp.readLine()) != null){
             resLine = res.readLine();
-            if(!compareLine(expLine,resLine)){
+            if(resLine == null){
+                System.out.println("HIBA! túl rövid kimenet");    
+                return;
+            } else if(!compareLine(expLine,resLine)){
                 System.out.println("HIBA!");
                 System.out.println("Elvárt: "+expLine);
                 System.out.println("Eredmény: "+resLine);  
+                return;
             }
         }
+        System.out.println("OK!");
     }
 
     private static boolean compareLine(String exp, String res){
