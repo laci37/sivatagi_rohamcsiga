@@ -15,14 +15,14 @@ class Simulation {
 //Az osztály konstruktora.
 //Létrehozza a versenypályát, és megadott számú robotot.
     public Simulation(int numRobots) {
-        System.out.println("[Trace] "+this.toString()+" Simulation.Simulation");
+        //System.out.println("[Trace] "+this.toString()+" Simulation.Simulation");
         racetrack = new Racetrack();
         robots = racetrack.createRobots(numRobots);
     }
 
 //Megadja azt a robotot, amelyik lépni fog.
     public Robot getNextRobot() {
-        System.out.println("[Trace] "+this.toString()+" Simulation.getNextRobot");
+        //System.out.println("[Trace] "+this.toString()+" Simulation.getNextRobot");
         return robots.get(nextRobot);
     }
 
@@ -36,7 +36,7 @@ class Simulation {
 
 //A még versenyben lévő robotok egymás utáni sorra kerüléséért felelős metódus.
     public boolean doJump() {
-        System.out.println("[Trace] "+this.toString()+" Simulation.doJump");
+        //System.out.println("[Trace] "+this.toString()+" Simulation.doJump");
         getNextRobot().jump();
         int prevRobot = nextRobot;
         nextRobot++;
