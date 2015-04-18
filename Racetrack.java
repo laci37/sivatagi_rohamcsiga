@@ -88,7 +88,7 @@ class Racetrack extends Shape {
         robots = new ArrayList();
         float xStep = 10.f/(num+1);
         for (int i = 1; i <= num; i++) {
-            list.add(new Robot(new Vector(40+i*xStep,0), this));
+            robots.add(new Robot(new Vector(40+i*xStep,0), this));
         }
         return robots;
     }
