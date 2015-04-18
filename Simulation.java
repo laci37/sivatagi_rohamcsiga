@@ -12,31 +12,29 @@ class Simulation {
 // A soron következő robot sorszámát tároló változó.
     private int nextRobot;
 
+
 //Az osztály konstruktora.
 //Létrehozza a versenypályát, és megadott számú robotot.
     public Simulation(int numRobots) {
-        //System.out.println("[Trace] "+this.toString()+" Simulation.Simulation");
         racetrack = new Racetrack();
         robots = racetrack.createRobots(numRobots);
     }
 
 //Megadja azt a robotot, amelyik lépni fog.
     public Robot getNextRobot() {
-        //System.out.println("[Trace] "+this.toString()+" Simulation.getNextRobot");
         return robots.get(nextRobot);
     }
 
     public Robot getRobot(int ix){
-      return robots.get(ix);
+        return robots.get(ix);
     }
 
     public Racetrack getRacetrack(){
-      return racetrack;
+        return racetrack;
     }
 
 //A még versenyben lévő robotok egymás utáni sorra kerüléséért felelős metódus.
     public boolean doJump() {
-        //System.out.println("[Trace] "+this.toString()+" Simulation.doJump");
         getNextRobot().jump();
         int prevRobot = nextRobot;
         nextRobot++;
@@ -50,6 +48,8 @@ class Simulation {
                 return false;
             }
         }
+        for(Cleaner c : racetrack.getCleaners()) c.step();
+        racetrack.ageBlobs();
         return true;
     }
 }

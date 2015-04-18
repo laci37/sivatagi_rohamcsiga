@@ -7,12 +7,27 @@ import java.util.ArrayList;
 class Racetrack extends Shape {
 //A Blobok tárolására használt lista.
     private ArrayList<Blob> blobs = new ArrayList();
+    private ArrayList<Robot> robots;
+    private ArrayList<Cleaner> cleaners = new ArrayList();
 
 //Az osztály konstruktora.
 //Létrehozza a versenypályát.
     public Racetrack() {
         //System.out.println("[Trace] "+this.toString()+" Racetrack.Racetrack");
     }
+    
+    public ArrayList<Blob> getBlobs(){
+        return blobs;
+    }
+
+    public ArrayList<Robot> getRobots(){
+        return robots;
+    }
+
+    public ArrayList<Cleaner> getCleaners(){
+        return cleaners;
+    }
+    //getters end
 // Megvizsgálja, hogy a paraméterben kapott helyen van-e folt. Ha nincs, null értékkel tér vissza, ha van, akkor a folttal.
     public Blob getBlobAt(Vector location) {
         //System.out.println("[Trace] "+this.toString()+" Racetrack.getBlobAt");
@@ -23,10 +38,17 @@ class Racetrack extends Shape {
         }
         return null;
     }
+
 //Hozzáadja a paraméterként kapott Blobot a Blobokat tároló listához.
     public void addBlob(Blob b) {
         //System.out.println("[Trace] "+this.toString()+" Racetrack.addBlob");
         blobs.add(0, b);
+    }
+
+    public void ageBlobs(){
+        for(Blob b : blobs){
+            b.age();
+        }
     }
 //Eldönti, hogy a pályán van-e az adott Vector.
     public boolean isInside(Vector v) {
@@ -51,11 +73,11 @@ class Racetrack extends Shape {
 //Num számú új robotot hoz létre, melyeket egy új listában eltárol.
     public ArrayList<Robot> createRobots(int num) {
         //System.out.println("[Trace] "+this.toString()+" Racetrack.createRobots");
-        ArrayList<Robot> list = new ArrayList();
+        robots = new ArrayList();
         float xStep = 10.f/(num+1);
         for (int i = 1; i <= num; i++) {
             list.add(new Robot(new Vector(40+i*xStep,0), this));
         }
-        return list;
+        return robots;
     }
 }
