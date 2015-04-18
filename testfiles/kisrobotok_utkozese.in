@@ -5,3 +5,4 @@ createCleaner (45;10) (0;0)
 createCleaner (46;10) (-1;0)
 jump 0
 printCleaner
+quit

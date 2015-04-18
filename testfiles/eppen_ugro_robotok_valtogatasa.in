@@ -12,3 +12,4 @@ jump 0
 printNextRobot
 jump 0
 printNextRobot
+quit

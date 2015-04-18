@@ -3,3 +3,4 @@ createBlob g  (46;0) 4
 jump 0
 jump 0
 printRobot
+quit

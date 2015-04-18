@@ -2,3 +2,4 @@ createRacetrack 1
 createBlob o (41;10)
 createCleaner (45;10) 
 printCleaner
+quit
