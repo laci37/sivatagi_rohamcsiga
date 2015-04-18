@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 class Prototype{
     static Simulation sim;
     public static void main(String[] args) throws Exception{
-        System.out.println("LZ anyád!");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         while(true){
             String line = in.readLine();
