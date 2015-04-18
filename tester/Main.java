@@ -66,7 +66,7 @@ class Main{
                 int close_index = exp.indexOf('>',exp_next);
                 String argname = exp.substring(exp_next+1,close_index);
                 if(argname.equals("addr")) {
-                    while(true){
+                    while(res_next < res.length()){
                         if(Character.isDigit(res.charAt(res_next)) ||
                           res.charAt(res_next) == 'a' ||
                           res.charAt(res_next) == 'b' ||
@@ -78,7 +78,7 @@ class Main{
                         else return false;
                     }
                 } else if(argname.startsWith("addr")){
-                    while(true){
+                    while(res_next < res.length()){
                         if(Character.isDigit(res.charAt(res_next)) ||
                           res.charAt(res_next) == 'a' ||
                           res.charAt(res_next) == 'b' ||
