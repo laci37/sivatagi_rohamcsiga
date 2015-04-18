@@ -13,7 +13,6 @@ class Racetrack extends Shape {
 //Az osztály konstruktora.
 //Létrehozza a versenypályát.
     public Racetrack() {
-        //System.out.println("[Trace] "+this.toString()+" Racetrack.Racetrack");
     }
     
     public ArrayList<Blob> getBlobs(){
@@ -30,7 +29,6 @@ class Racetrack extends Shape {
     //getters end
 // Megvizsgálja, hogy a paraméterben kapott helyen van-e folt. Ha nincs, null értékkel tér vissza, ha van, akkor a folttal.
     public Blob getBlobAt(Vector location) {
-        //System.out.println("[Trace] "+this.toString()+" Racetrack.getBlobAt");
         for (Blob b : blobs) {
             if (b.isInside(location)) {
                 return b;
@@ -39,9 +37,26 @@ class Racetrack extends Shape {
         return null;
     }
 
+    public void addCleaner(Cleaner c){
+        cleaners.add(c);
+    }
+
+    public Cleaner collidingCleaner(Vector pos){
+        for(Cleaner c: cleaners){
+            if(c.isInside(pos)) return c;
+        }
+        return null;
+    }
+
+    public Robot collidingRobot(Vector pos){
+        for(Robot r: robots){
+            if(r.isInside(pos)) return r;
+        }
+        return null;
+    }
+
 //Hozzáadja a paraméterként kapott Blobot a Blobokat tároló listához.
     public void addBlob(Blob b) {
-        //System.out.println("[Trace] "+this.toString()+" Racetrack.addBlob");
         blobs.add(0, b);
     }
 
@@ -52,7 +67,6 @@ class Racetrack extends Shape {
     }
 //Eldönti, hogy a pályán van-e az adott Vector.
     public boolean isInside(Vector v) {
-        //System.out.println("[Trace] "+this.toString()+" Racetrack.isInside");
         boolean xInsideLarge = v.getX() > -50  && v.getX() < 50;
         boolean xInsideSmall = v.getX() > -40 && v.getX() < 40;
         boolean yInsideLarge = v.getY() > -50 && v.getY() < 50;
@@ -63,7 +77,6 @@ class Racetrack extends Shape {
     }
 //Megadja, hogy a lépés során átléptük-e a célvonalat.
     public int lapDifference(Vector start, Vector end) {
-        //System.out.println("[Trace] "+this.toString()+" Racetrack.lapDifference");
         float angleStart = (float)Math.atan2(start.getY(),start.getX());
         float angleEnd = (float)Math.atan2(end.getY(),end.getX());
         if(angleStart>0 && angleEnd<0) return -1;
@@ -72,7 +85,6 @@ class Racetrack extends Shape {
     }
 //Num számú új robotot hoz létre, melyeket egy új listában eltárol.
     public ArrayList<Robot> createRobots(int num) {
-        //System.out.println("[Trace] "+this.toString()+" Racetrack.createRobots");
         robots = new ArrayList();
         float xStep = 10.f/(num+1);
         for (int i = 1; i <= num; i++) {

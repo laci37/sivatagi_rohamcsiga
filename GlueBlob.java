@@ -5,7 +5,6 @@ class GlueBlob extends Blob {
     //Létrehoz egy GlueBlob-ot egy adott helyre.
     public GlueBlob(Vector location) {
         super(location);
-        //System.out.println("[Trace] "+this.toString()+" GlueBlob.GlueBlob");
     }
 
     //Ez a függvény felelős a GlueBlob hatásának végrehajtásáért, tehát lefelezi a robot sebességét.

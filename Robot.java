@@ -21,7 +21,6 @@ class Robot extends Circle {
 //Létrehoz egy új robotot a megadott helyre és beállítja a Robot többi attribútumát.
     public Robot(Vector location, Racetrack racetrack) {
         super(location,1f);
-        //System.out.println("[Trace] "+this.toString()+" Robot.Robot");
         speed = new Vector();
         canChangeSpeed = true;
         alive = true;
@@ -33,42 +32,35 @@ class Robot extends Circle {
 
 //Visszaadja a robot sebességét.
     public Vector getSpeed() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.getSpeed");
         return speed;
     }
 
 //Visszaadja, hogy változtatható-e a robot sebessége.
     public boolean getCanChangeSpeed() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.getCanChangeSpeed");
         return canChangeSpeed;
     }
 //Visszaadja a robot helyzetét.
     public Vector getLocation() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.getLocation");
         return getCenter();
     }
 
 //Visszaadja a rendelkezésre álló, letehető OilBlobok számát.
     public int getOilSupply() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.getOilSupply");
         return oilSupply;
     }
 
 //Visszaadja a rendelkezésre álló, letehető GlueBlobok számát.
     public int getGlueSupply() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.getGlueSupply");
         return glueSupply;
     }
 
 //Visszaadja az eddig megtett körök számát.
     public int getLaps() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.getLaps");
         return laps;
     }
 
 //Visszaadja, hogy versenyben van-e még a robot.
     public boolean isAlive() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.isAlive");
         return alive;
     }
 
@@ -76,25 +68,21 @@ class Robot extends Circle {
 
 //Segítségével lehet beállítani a robot sebességét.
     public void setSpeed(Vector value) {
-        //System.out.println("[Trace] "+this.toString()+" Robot.setSpeed");
         this.speed = value;
     }
 
 //Segítségével lehet beállítani, hogy éppen változtatható-e a robot sebessége.
     public void setCanChangeSpeed(boolean value) {
-        //System.out.println("[Trace] "+this.toString()+" Robot.setCanChangeSpeed");
         this.canChangeSpeed = value;
     }
 
 //Segítségével lehet beállítani a robot helyzetét.
     public void setLocation(Vector value) {
-        //System.out.println("[Trace] "+this.toString()+" Robot.setLocation");
         setCenter(value);
     }
 
 //Segítségével lehet beállítani a robot által  megtett körök számát.
     public void setLaps(int value) {
-        //System.out.println("[Trace] "+this.toString()+" Robot.setLaps");
         this.laps = value;
     }
 
@@ -102,7 +90,6 @@ class Robot extends Circle {
 
 //Ez a metódus felelős az OilBlob-ok elhelyezéséért.
     public void placeOilBlob() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.placeOilBlob");
         if (oilSupply > 0) {
             racetrack.addBlob(new OilBlob(this.getLocation()));
             oilSupply--;
@@ -110,7 +97,6 @@ class Robot extends Circle {
     }
 //Ez a metódus felelős az GlueBlob-ok elhelyezéséért.
     public void placeGlueBlob() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.placeGlueBlob");
         if (glueSupply > 0) {
             racetrack.addBlob(new GlueBlob(this.getLocation()));
             glueSupply--;
@@ -127,7 +113,6 @@ class Robot extends Circle {
 
 //Az ugrás folyamatát megvalósító metódus.
     public void jump() {
-        //System.out.println("[Trace] "+this.toString()+" Robot.jump");
         Vector oldloc = this.getLocation().clone();
         this.getLocation().add(speed);
         if (racetrack.isInside(this.getLocation())) {
