@@ -1,15 +1,13 @@
 package sivatagi_rohamcsiga;
 //A robotok működésért felelős osztály.
 //Megvalósítja a sebességgel kapcsolatos funkcióit a játéknak, a foltok lerakásával kapcsolatos funkciókat, és az ugrást is.
-class Robot {
+class Robot extends Circle {
 //A robot sebességvektorát tároló Vector objektum.
     private Vector speed;
 //Azt tárolja, hogy változtatható-e a robot sebessége.
     private boolean canChangeSpeed;
 //Azt tárolja, hogy versenyben van-e a robot.
     private boolean alive;
-//A robot helyzetét tároló Vector objektum.
-    private Vector location;
 // A versenypályára mutató referencia.
     private Racetrack racetrack;
 //A robot számára rendelkezésre álló, letehető OilBlobok számát tároló változó.
@@ -22,6 +20,7 @@ class Robot {
 //Az osztály konstruktora.
 //Létrehoz egy új robotot a megadott helyre és beállítja a Robot többi attribútumát.
     public Robot(Vector location, Racetrack racetrack) {
+        super(location,1f);
         System.out.println("[Trace] "+this.toString()+" Robot.Robot");
         speed = new Vector();
         canChangeSpeed = true;
@@ -29,7 +28,6 @@ class Robot {
         oilSupply = 5;
         glueSupply = 5;
         laps = 0;
-        this.location = location;
         this.racetrack = racetrack;
     }
 
@@ -47,7 +45,7 @@ class Robot {
 //Visszaadja a robot helyzetét.
     public Vector getLocation() {
         System.out.println("[Trace] "+this.toString()+" Robot.getLocation");
-        return location;
+        return getCenter();
     }
 
 //Visszaadja a rendelkezésre álló, letehető OilBlobok számát.
@@ -91,7 +89,7 @@ class Robot {
 //Segítségével lehet beállítani a robot helyzetét.
     public void setLocation(Vector value) {
         System.out.println("[Trace] "+this.toString()+" Robot.setLocation");
-        this.location = value;
+        setCenter(value);
     }
 
 //Segítségével lehet beállítani a robot által  megtett körök számát.
@@ -106,7 +104,7 @@ class Robot {
     public void placeOilBlob() {
         System.out.println("[Trace] "+this.toString()+" Robot.placeOilBlob");
         if (oilSupply > 0) {
-            racetrack.addBlob(new OilBlob(this.location));
+            racetrack.addBlob(new OilBlob(this.getLocation()));
             oilSupply--;
         }
     }
@@ -114,20 +112,28 @@ class Robot {
     public void placeGlueBlob() {
         System.out.println("[Trace] "+this.toString()+" Robot.placeGlueBlob");
         if (glueSupply > 0) {
-            racetrack.addBlob(new GlueBlob(this.location));
+            racetrack.addBlob(new GlueBlob(this.getLocation()));
             glueSupply--;
+        }
+    }
+
+    public void changeSpeed(float dir){
+        if(canChangeSpeed){
+            float dx = (float)Math.cos(dir);
+            float dy = (float)Math.sin(dir);
+            speed.add(new Vector(dx,dy));
         }
     }
 
 //Az ugrás folyamatát megvalósító metódus.
     public void jump() {
         System.out.println("[Trace] "+this.toString()+" Robot.jump");
-        Vector oldloc = location.clone();
-        location.add(speed);
-        if (racetrack.isInside(location)) {
-            laps += racetrack.lapDifference(oldloc, location);
+        Vector oldloc = this.getLocation().clone();
+        this.getLocation().add(speed);
+        if (racetrack.isInside(this.getLocation())) {
+            laps += racetrack.lapDifference(oldloc, this.getLocation());
             canChangeSpeed = true;
-            Blob b = racetrack.getBlobAt(this.location);
+            Blob b = racetrack.getBlobAt(this.getLocation());
             if (b != null)
                 b.applyEffect(this);
         } else {
@@ -137,7 +143,7 @@ class Robot {
 
     public void debugPrint(){
        System.out.println(this.toString()); 
-       System.out.println("Pozíció: "+location.toString());
+       System.out.println("Pozíció: "+getLocation().toString());
        System.out.println("Sebesség: "+speed.toString());
        System.out.println("Körök: "+laps);
     }

@@ -26,6 +26,14 @@ class Simulation {
         return robots.get(nextRobot);
     }
 
+    public Robot getRobot(int ix){
+      return robots.get(ix);
+    }
+
+    public Racetrack getRacetrack(){
+      return racetrack;
+    }
+
 //A még versenyben lévő robotok egymás utáni sorra kerüléséért felelős metódus.
     public boolean doJump() {
         System.out.println("[Trace] "+this.toString()+" Simulation.doJump");
