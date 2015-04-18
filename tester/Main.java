@@ -27,7 +27,7 @@ class Main{
                     }
                     compare(expectReader,resultReader);
                 } catch(Exception e) {
-                    System.out.println(e +" "+ e.getMessage());
+                    e.printStackTrace();
                 }
             } else {
                 System.out.println("Hiányzó exp fájl: "+name);
