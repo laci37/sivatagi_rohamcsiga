@@ -3,8 +3,8 @@ import java.util.HashMap;
 import java.io.*;
 class Main{
     public static void main(String[] args){
-        String cp = args[1];
-        String testdir = args[2];
+        String cp = args[0];
+        String testdir = args[1];
         HashMap<String,File> inputs = getInputs(testdir);
         HashMap<String,File> expect = getExpected(testdir);
         for(String name : inputs.keySet()){
@@ -99,7 +99,7 @@ class Main{
     private static HashMap<String,File> createMap(File[] fs){
         HashMap<String,File> map = new HashMap();
         for(File f : fs){
-            map.put(f.getName().split(".")[0],f);
+            map.put(f.getName().split("\\.")[0],f);
         }
         return map;
     }
