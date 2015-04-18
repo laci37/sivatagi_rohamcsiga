@@ -11,21 +11,18 @@ class Circle extends Shape {
     //Az osztály konstruktora.
     // A paraméterként kapott Vector lesz a kör középpontja (center) és a float a sugara (radius).
     public Circle(Vector center, float radius) {
-        System.out.println("[Trace] "+this.toString()+" Circle.Circle");
         this.center = center;
         this.radius = radius;
     }
 	
     //Visszatér a kör középpontjával.
     public Vector getCenter() {
-        System.out.println("[Trace] "+this.toString()+" Circle.getCenter");
         return center;
     }
 
 
     //Visszatér a kör sugarával.
     public float getRadius() {
-        System.out.println("[Trace] "+this.toString()+" Circle.getRadius");
         return radius;
     }
 
@@ -41,7 +38,6 @@ class Circle extends Shape {
 
     //Paraméterül kap egy Vector-t, és eldönti, hogy annak végpontja az adott körön belül van-e.
     public boolean isInside(Vector v) {
-        System.out.println("[Trace] "+this.toString()+" Circle.isInside");
         float diffX = v.getX() - center.getX();
         float diffY = v.getY() - center.getY();
         return radius * radius > diffX * diffX + diffY * diffY;
