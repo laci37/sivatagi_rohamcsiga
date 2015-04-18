@@ -65,13 +65,18 @@ class Prototype{
         } else if(cmd.equals("setRandomFloat")){
           //TODO
         } else if(cmd.equals("printRobot")){
-          //TODO
+            if(tokens.length<2){
+                for(Robot r : sim.getAllRobots()) r.debugPrint();
+            } else {
+                int ix = Integer.parseInt(tokens[1]);
+                sim.getRobot(ix).debugPrint(); 
+            }
         } else if(cmd.equals("printNextRobot")){
-          //TODO
+            sim.getNextRobot().debugPrint();
         } else if(cmd.equals("printCleaner")){
-          //TODO
+            for(Cleaner c : sim.getRacetrack().getCleaners()) c.debugPrint();
         } else if(cmd.equals("printBlob")){
-          //TODO
+            for(Blob b: sim.getRacetrack().getBlobs()) b.debugPrint();
         } else {
             System.err.println("Ismeretlen parancs: "+cmd);
         }

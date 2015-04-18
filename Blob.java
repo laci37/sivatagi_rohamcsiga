@@ -24,4 +24,11 @@ abstract class Blob extends Circle {
     public void kill(){
         age=1000;
     }
+
+    public abstract boolean isAlive();
+
+    public void debugPrint(){
+        System.out.println(this.toString().substring(20)); 
+        System.out.println("Pos: "+getCenter()+" Alive: "+isAlive()+" Age: "+age);
+    }
 }

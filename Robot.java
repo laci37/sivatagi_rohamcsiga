@@ -127,9 +127,9 @@ class Robot extends Circle {
     }
 
     public void debugPrint(){
-       System.out.println(this.toString()); 
-       System.out.println("Pozíció: "+getLocation().toString());
-       System.out.println("Sebesség: "+speed.toString());
-       System.out.println("Körök: "+laps);
+       System.out.println(this.toString().substring(20)); 
+       System.out.println("Pos: "+getLocation().toString() + " Speed: "+speed.toString());
+       System.out.println("Laps: "+laps+" Alive: "+alive);
+       System.out.println("Oil: "+oilSupply+" Glue: "+glueSupply);
     }
 }

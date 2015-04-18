@@ -52,6 +52,6 @@ class Vector {
     //Olvasható stringet csinál a koordinátákból
     @Override
     public String toString(){
-        return "("+x+", "+y+")"+super.toString();
+        return "("+x+";"+y+")";
     }
 }

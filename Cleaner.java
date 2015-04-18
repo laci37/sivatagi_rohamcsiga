@@ -49,4 +49,10 @@ class Cleaner extends Circle{
         //TODO
         return null;
     }
+
+    public void debugPrint(){
+        System.out.println(this.toString().substring(20)); 
+        System.out.println("Pos: "+getCenter()+" Speed: "+speed);
+        System.out.println("Alive: "+alive);
+    }
 }

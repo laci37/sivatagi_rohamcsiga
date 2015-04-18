@@ -29,6 +29,10 @@ class Simulation {
         return robots.get(ix);
     }
 
+    public ArrayList<Robot> getAllRobots(){
+        return robots;
+    }
+
     public Racetrack getRacetrack(){
         return racetrack;
     }
