@@ -7,11 +7,13 @@ class Main{
         String testdir = args[1];
         HashMap<String,File> inputs = getInputs(testdir);
         HashMap<String,File> expect = getExpected(testdir);
+        int ok=0,all=0;
         for(String name : inputs.keySet()){
             System.out.println("Test: "+name);
             File in = inputs.get(name);
             File exp = expect.get(name);
             if(exp!=null){
+                all++;
                 try{
                     Process p = Runtime.getRuntime().exec("java -cp "+cp+" sivatagi_rohamcsiga.Prototype");
                     OutputStream os = p.getOutputStream();
@@ -25,7 +27,7 @@ class Main{
                         os.write(buffer,0,bytesRead);
                         os.flush();
                     }
-                    compare(expectReader,resultReader);
+                    if(compare(expectReader,resultReader)) ok++;
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
@@ -33,24 +35,26 @@ class Main{
                 System.out.println("Hiányzó exp fájl: "+name);
             }
         }
+        System.out.println("Sum: "+ok+"/"+all);
     }
 
-    private static void compare(BufferedReader exp, BufferedReader res) throws IOException{
+    private static boolean compare(BufferedReader exp, BufferedReader res) throws IOException{
         String expLine;
         String resLine;
         while((expLine = exp.readLine()) != null){
             resLine = res.readLine();
             if(resLine == null){
                 System.out.println("HIBA! túl rövid kimenet");    
-                return;
+                return false;
             } else if(!compareLine(expLine,resLine)){
                 System.out.println("HIBA!");
                 System.out.println("Elvárt: "+expLine);
                 System.out.println("Eredmény: "+resLine);  
-                return;
+                return false ;
             }
         }
         System.out.println("OK!");
+        return true;
     }
 
     private static boolean compareLine(String exp, String res){
