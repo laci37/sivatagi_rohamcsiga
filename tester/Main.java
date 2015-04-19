@@ -90,7 +90,7 @@ class Main{
                         else return false;
                     }
                 } else if (argname.equals("int")) {
-                    while(true){
+                    while(res_next < res.length()){
                         if(Character.isDigit(res.charAt(res_next))) res_next++;
                         else if(Character.isWhitespace(res.charAt(res_next))) break;
                         else return false;
