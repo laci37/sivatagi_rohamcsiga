@@ -1,4 +1,4 @@
-createRactrack 1
+createRacetrack 1
 randomGenerator off
 setRandomFloat 0
 createCleaner (46;0)

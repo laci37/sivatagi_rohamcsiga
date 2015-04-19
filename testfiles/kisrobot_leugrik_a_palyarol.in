@@ -1,4 +1,5 @@
 createRacetrack 1
+setPos 0 (45;10)
 createCleaner (46;0) (60;0)
 jump 0
 printCleaner

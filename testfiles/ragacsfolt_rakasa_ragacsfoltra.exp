@@ -1,4 +1,4 @@
 Robot@<addr>
-Pos: (45.5;0.0) Speed: (0.5;0.0)
+Pos: (48.0;0.0) Speed: (1.5;0.0)
 Laps: <int> Alive: true
 Oil: <int> Glue: <int>

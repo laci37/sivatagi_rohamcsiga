@@ -3,4 +3,4 @@ Pos: (47.0;0.0) Speed: (1.0;0.0)
 Laps: 0 Alive: true
 Oil: <int> Glue: <int>
 OilBlob@<addr>
-Pos: (46.0;0.0) Alive: false Age: 4
+Pos: (46.0;0.0) Alive: false Age: 5

@@ -55,6 +55,10 @@ class Vector {
         return (float)Math.sqrt(dx*dx+dy*dy);
     }
 
+    public float length(){
+        return (float)Math.sqrt(x*x+y*y);
+    }
+
     //Olvasható stringet csinál a koordinátákból
     @Override
     public String toString(){

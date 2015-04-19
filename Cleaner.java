@@ -40,6 +40,10 @@ class Cleaner extends Circle{
         alive=false;
     }
 
+    public boolean isAlive(){
+        return alive;
+    }
+
     public void step(){
         Blob b = racetrack.getBlobAt(this.getCenter());
         if(b!=null){
@@ -53,18 +57,27 @@ class Cleaner extends Circle{
     protected void jump(){
         getCenter().add(speed);
         if(!racetrack.isInside(getCenter())) kill();
+        else {
+            Cleaner coll1 = racetrack.collidingCleaner(getCenter(),this);
+            Robot coll2 = racetrack.collidingRobot(getCenter());
+            if(coll1 != null || coll2 != null){
+                goTowardsBlob(selectBlob());
+            }
+        }
     }
 
     protected Blob selectBlob(){
         ArrayList<Blob> blobs = racetrack.getBlobs();
         if(blobs.isEmpty()) return null;
-        Blob minblob = blobs.get(0);
-        float mindist = getCenter().dist(minblob.getCenter());
+        Blob minblob = null;
+        float mindist = 0;
         for(Blob b: blobs){
-            float dist = getCenter().dist(b.getCenter());
-            if(dist<mindist){
-                minblob=b;
-                mindist=dist;
+            if (b.isAlive()) {
+                float dist = getCenter().dist(b.getCenter());
+                if(dist<mindist || minblob==null){
+                    minblob=b;
+                    mindist=dist;
+                }
             }
         }
         return minblob;

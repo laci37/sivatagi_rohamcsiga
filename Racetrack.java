@@ -42,15 +42,22 @@ class Racetrack extends Shape {
     }
 
     public Cleaner collidingCleaner(Vector pos){
+        return collidingCleaner(pos,null);
+    }
+
+    public Cleaner collidingCleaner(Vector pos, Cleaner asker){
         for(Cleaner c: cleaners){
-            if(c.isInside(pos)) return c;
+            if(c != asker && c.isInside(pos)) return c;
         }
         return null;
     }
 
     public Robot collidingRobot(Vector pos){
+        return collidingRobot(pos,null);
+    }
+    public Robot collidingRobot(Vector pos, Robot asker){
         for(Robot r: robots){
-            if(r.isInside(pos)) return r;
+            if(r != asker && r.isInside(pos)) return r;
         }
         return null;
     }
@@ -80,7 +87,7 @@ class Racetrack extends Shape {
         float angleStart = (float)Math.atan2(start.getY(),start.getX());
         float angleEnd = (float)Math.atan2(end.getY(),end.getX());
         if(angleStart>0 && angleEnd<0) return -1;
-        else if(angleStart<0 && angleEnd<0) return 1;
+        else if(angleStart<0 && angleEnd>0) return 1;
         else return 0;
     }
 //Num számú új robotot hoz létre, melyeket egy új listában eltárol.

@@ -121,6 +121,16 @@ class Robot extends Circle {
             Blob b = racetrack.getBlobAt(this.getLocation());
             if (b != null)
                 b.applyEffect(this);
+            Cleaner collCleaner = racetrack.collidingCleaner(getLocation());
+            if(collCleaner != null) collCleaner.kill();
+            Robot collRobot = racetrack.collidingRobot(getLocation(),this);
+            if(collRobot != null){
+                if(collRobot.getSpeed().length() < speed.length()){
+                    collRobot.alive = false;
+                } else{
+                    this.alive = false;
+                }
+            }
         } else {
             alive = false;
         }

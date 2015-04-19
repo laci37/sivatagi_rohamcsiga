@@ -52,7 +52,9 @@ class Simulation {
                 return false;
             }
         }
-        for(Cleaner c : racetrack.getCleaners()) c.step();
+        for(Cleaner c : racetrack.getCleaners()){
+            if(c.isAlive()) c.step();
+        }
         racetrack.ageBlobs();
         return true;
     }

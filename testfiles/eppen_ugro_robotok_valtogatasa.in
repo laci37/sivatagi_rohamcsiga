@@ -1,4 +1,6 @@
 createRacetrack 3
+setPos 1 (45;10)
+setPos 2 (47.5;-10)
 printNextRobot
 jump 0
 printNextRobot

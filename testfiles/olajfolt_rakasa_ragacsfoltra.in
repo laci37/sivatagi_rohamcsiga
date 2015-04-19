@@ -1,5 +1,5 @@
 createRacetrack 1
-createBlob g (46,0)
+createBlob g (46;0)
 jump 0 o
 jump 0
 printRobot

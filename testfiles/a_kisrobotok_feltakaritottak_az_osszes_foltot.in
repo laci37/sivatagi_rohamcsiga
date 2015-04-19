@@ -1,4 +1,5 @@
 createRacetrack 1
+setPos 0 (45;-10)
 randomGenerator off
 setRandomFloat 0
 createBlob o (46;0)

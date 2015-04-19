@@ -1,5 +1,5 @@
 createRacetrack 1
-createBlob o (45.0,0.0)
+createBlob o (45.0;0.0)
 jump 0 g
 setPos 0 (44.5;0)
 jump 0
