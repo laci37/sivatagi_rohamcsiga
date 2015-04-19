@@ -25,14 +25,17 @@ class Simulation {
         return robots.get(nextRobot);
     }
 
+    //Visszatér az adott indexű robottal.
     public Robot getRobot(int ix){
         return robots.get(ix);
     }
 
+    //Visszatér a robotok listájával.
     public ArrayList<Robot> getAllRobots(){
         return robots;
     }
 
+    //Visszatér a versenypályával.
     public Racetrack getRacetrack(){
         return racetrack;
     }

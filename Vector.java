@@ -49,12 +49,14 @@ class Vector {
         return new Vector(x, y);
     }
 
+    //A két pont távolságát visszaadó függvény.
     public float dist(Vector that){
         float dx=this.x-that.x;
         float dy=this.y-that.y;
         return (float)Math.sqrt(dx*dx+dy*dy);
     }
 
+    //A vektor hosszát megadó függvény.
     public float length(){
         return (float)Math.sqrt(x*x+y*y);
     }

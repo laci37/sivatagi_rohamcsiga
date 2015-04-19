@@ -103,6 +103,7 @@ class Robot extends Circle {
         }
     }
 
+    //A robot sebességét megváltoztató függvény.
     public void changeSpeed(float dir){
         if(canChangeSpeed){
             float dx = (float)Math.cos(dir);
@@ -136,6 +137,7 @@ class Robot extends Circle {
         }
     }
 
+    //A prototype kimentére író függvény.
     public void debugPrint(){
        System.out.println(this.toString().substring(20)); 
        System.out.println("Pos: "+getLocation().toString() + " Speed: "+speed.toString());
