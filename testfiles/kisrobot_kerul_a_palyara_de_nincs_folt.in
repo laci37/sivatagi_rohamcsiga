@@ -1,11 +1,8 @@
 createRactrack 1
 randomGenerator off
 setRandomFloat 0
-creatCleaner (46; 0)
+createCleaner (46;0)
 jump 0
 jump 0
 printCleaner
-
-
-
 quit
