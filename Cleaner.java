@@ -18,7 +18,11 @@ class Cleaner extends Circle{
             float dirx = target.getCenter().getX() - this.getCenter().getX();
             float diry = target.getCenter().getY() - this.getCenter().getY();
             float length =(float)Math.sqrt(dirx*dirx + diry*diry);
-            speed = new Vector(dirx/length, diry/length);
+            if(length>0){
+                speed = new Vector(dirx/length, diry/length);
+            } else {
+                speed = new Vector(0f,0f);
+            }
         } else {
             float dir = Random.randomFloat();
             speed = new Vector((float)Math.cos(dir),(float)Math.sin(dir));
