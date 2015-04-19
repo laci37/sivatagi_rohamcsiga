@@ -11,7 +11,7 @@ class Circle extends Shape {
     //Az osztály konstruktora.
     // A paraméterként kapott Vector lesz a kör középpontja (center) és a float a sugara (radius).
     public Circle(Vector center, float radius) {
-        this.center = center;
+        this.center = center.clone();
         this.radius = radius;
     }
 	
