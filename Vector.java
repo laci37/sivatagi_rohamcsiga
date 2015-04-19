@@ -49,6 +49,12 @@ class Vector {
         return new Vector(x, y);
     }
 
+    public float dist(Vector that){
+        float dx=this.x-that.x;
+        float dy=this.y-that.y;
+        return (float)Math.sqrt(dx*dx+dy*dy);
+    }
+
     //Olvasható stringet csinál a koordinátákból
     @Override
     public String toString(){
