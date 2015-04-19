@@ -3,5 +3,5 @@ Pos: (46.0;0.0) Speed: (1.0;0.0)
 Laps: 0 Alive: true
 Oil: <int> Glue: <int>
 Cleaner@<addr>
-Pos: (45.0;0.0) Speed (1.0;0.0)
+Pos: (45.0;0.0) Speed: (1.0;0.0)
 Alive: true
