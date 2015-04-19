@@ -55,6 +55,11 @@ class Main{
 
     private static boolean compareLine(String exp, String res){
         int exp_next=0, res_next=0;
+        boolean printall=false;
+        if(printall){
+            System.out.println("exp: "+exp);
+            System.out.println("res: "+res);
+        }
         while(exp_next<exp.length() && res_next<res.length()){
             if(exp.charAt(exp_next) != '<'){
                 if(exp.charAt(exp_next)!=res.charAt(res_next)){
