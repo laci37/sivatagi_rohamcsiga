@@ -56,18 +56,27 @@ class Prototype{
             }
         } else if(cmd.equals("createCleaner")){
             if(tokens.length==2){
-              //TODO nincsenek meg a metódusok a modellben
+                sim.getRacetrack().addCleaner(new Cleaner(parseVector(tokens[1]),sim.getRacetrack())); 
             } else {
-
+                sim.getRacetrack().addCleaner(new Cleaner(parseVector(tokens[1]),sim.getRacetrack(),parseVector(tokens[2]))); 
             }
         } else if(cmd.equals("randomCleaning")){
           //TODO
         } else if(cmd.equals("randomGenerator")){
-          //TODO
+            if(tokens[1].equals("on")){
+                Random.on();
+            } else if(tokens[1].equals("off")){
+                Random.off();
+            }
         } else if(cmd.equals("setRandomBool")){
-          //TODO
+            if(tokens[1].equals("true")){
+                Random.setRandomBoolean(true);
+            } else if(tokens[1].equals("false")){
+                Random.setRandomBoolean(false);
+            }
         } else if(cmd.equals("setRandomFloat")){
-          //TODO
+            float f = Float.parseFloat(tokens[1]);
+            Random.setRandomFloat(f);
         } else if(cmd.equals("printRobot")){
             if(tokens.length<2){
                 for(Robot r : sim.getAllRobots()) r.debugPrint();
