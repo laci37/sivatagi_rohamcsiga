@@ -7,6 +7,10 @@ class OilBlob extends Blob {
         super(location);
     }
 
+    public OilBlob(Vector location, int age){
+        super(location,age);
+    }
+
 	//Ez a függvény felelős a GlueBlob hatásának végrehajtásáért, tehát letiltja a sebesség változtatásának lehetőségét.
     public void applyEffect(Robot r) {
         if(isAlive()){

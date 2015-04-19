@@ -7,6 +7,9 @@ class GlueBlob extends Blob {
         super(location);
     }
 
+    public GlueBlob(Vector location, int age){
+        super(location,age);
+    }
     //Ez a függvény felelős a GlueBlob hatásának végrehajtásáért, tehát lefelezi a robot sebességét.
     public void applyEffect(Robot r) {
         if(isAlive()){

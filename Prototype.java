@@ -45,10 +45,14 @@ class Prototype{
             int ix = Integer.parseInt(tokens[1]);
             sim.getRobot(ix).setSpeed(parseVector(tokens[2])); 
         } else if(cmd.equals("createBlob")){
+            int age = 0;
+            if(tokens.length>3){
+                age = Integer.parseInt(tokens[3]);
+            }
             if(tokens[1].equals("o")){
-                sim.getRacetrack().addBlob(new OilBlob(parseVector(tokens[2])));
+                sim.getRacetrack().addBlob(new OilBlob(parseVector(tokens[2]),age));
             } else if(tokens[1].equals("g")){
-                sim.getRacetrack().addBlob(new GlueBlob(parseVector(tokens[2])));
+                sim.getRacetrack().addBlob(new GlueBlob(parseVector(tokens[2]),age));
             }
         } else if(cmd.equals("createCleaner")){
             if(tokens.length==2){
