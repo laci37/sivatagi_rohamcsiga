@@ -1,4 +1,5 @@
 createRacetrack 1
+setSpeed 0 (-1;0)
 create o (46;0)
 createCleaner (46;0)
 jump 0

@@ -1,6 +1,6 @@
 Robot@<addr>
-Pos: (43.5;0.0) Speed: (1.0;0.0)
+Pos: (46.0;0.0) Speed: (1.0;0.0)
 Laps: 0 Alive: true
-Oil: <int> Glue: <int>
+Oil: 4 Glue: 5
 OilBlob@<addr>
-Pos: (42.5;0.0) Alive: true Age: <int>
+Pos: (45.0;0.0) Alive: true Age: <int>
