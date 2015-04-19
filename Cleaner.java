@@ -1,11 +1,17 @@
 package sivatagi_rohamcsiga;
 import java.util.ArrayList;
 
+//A takarító kisrobotokat megvalósító osztály.
 class Cleaner extends Circle{
+    //Működik-e a robot?
     private boolean alive;
+    //Referencia a versenypályára
     private Racetrack racetrack;
+    //A kisrobot sebességét tároló változó
     private Vector speed;
 
+    //Az osztály konstruktora.
+    //A paraméterként kapott versenypályán, az adott pozíción létrehoz egy takarító kisrobotot.
     public Cleaner(Vector pos, Racetrack racetrack){
         super(pos,0.5f);
         alive=true;
@@ -13,6 +19,7 @@ class Cleaner extends Circle{
         goTowardsBlob(selectBlob());
     }
 
+    //A robot sebességét, az adott folt felé beállító függvény.
     protected void goTowardsBlob(Blob target){
         if(target!=null){
             float dirx = target.getCenter().getX() - this.getCenter().getX();
@@ -29,6 +36,7 @@ class Cleaner extends Circle{
         }
     }
 
+    //Új kisrobotot hoz létre, és beállítja a sebességét.
     public Cleaner(Vector pos, Racetrack racetrack, Vector speed){
         super(pos,0.5f);
         alive=true;
@@ -36,14 +44,17 @@ class Cleaner extends Circle{
         this.speed = speed;
     }
 
+    //A kisrobot meghal.
     public void kill(){
         alive=false;
     }
 
+    //Megadja hogy él-e a kisrobot.
     public boolean isAlive(){
         return alive;
     }
 
+    //Egy időlépés a kisrobottal, az vagy ugrik, vagy takarít ezalatt.
     public void step(){
         Blob b = racetrack.getBlobAt(this.getCenter());
         if(b!=null){
@@ -54,6 +65,7 @@ class Cleaner extends Circle{
         }
     }
 
+    //A kisrobot ugrik a sebessége szerint.
     protected void jump(){
         getCenter().add(speed);
         if(!racetrack.isInside(getCenter())) kill();
@@ -66,6 +78,7 @@ class Cleaner extends Circle{
         }
     }
 
+    //A kisrobothoz legközelebb eső folt kiválasztásáért felelős függvény.
     protected Blob selectBlob(){
         ArrayList<Blob> blobs = racetrack.getBlobs();
         if(blobs.isEmpty()) return null;
@@ -83,6 +96,7 @@ class Cleaner extends Circle{
         return minblob;
     }
 
+    ////A prototype kimentére író függvény.
     public void debugPrint(){
         System.out.println(this.toString().substring(20)); 
         System.out.println("Pos: "+getCenter()+" Speed: "+speed);

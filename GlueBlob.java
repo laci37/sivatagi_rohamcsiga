@@ -7,6 +7,7 @@ class GlueBlob extends Blob {
         super(location);
     }
 
+    ////Az osztály konstrukra, mely a megadott pozíción létrehoz egy új ragacsfoltot, a megadott korral.
     public GlueBlob(Vector location, int age){
         super(location,age);
     }
@@ -22,6 +23,7 @@ class GlueBlob extends Blob {
         }
     }
 
+    //Megadja hogy hat-e még a folt.
     public boolean isAlive(){
         return age<4; 
     }

@@ -28,10 +28,12 @@ class Circle extends Shape {
 
     // getters end
 
+    //A paraméterként kapott pozícióra állítja be a kör közepét.
     public void setCenter(Vector center){
         this.center = center;
     }
 
+    //A paraméterként kapott értékre állítja be a kör sugarát.
     public void setRadius(float r){
         radius = r;
     }

@@ -7,6 +7,7 @@ class OilBlob extends Blob {
         super(location);
     }
 
+    //Az osztály konstrukra, mely a megadott pozíción létrehoz egy új olajfoltot, a megadott korral.
     public OilBlob(Vector location, int age){
         super(location,age);
     }
@@ -19,10 +20,12 @@ class OilBlob extends Blob {
     }
 
     @Override
+    //A folt korának növeléséért felelős függvény.
     public void age(){
         age++;
     }
 
+    //Megadja hogy hat-e még a folt.
     public boolean isAlive(){
         return age<4;
     }
